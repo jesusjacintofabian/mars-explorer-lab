@@ -1,0 +1,3 @@
+# Aldo
+- Rol: GIS / Datos de Marte
+- Lo que quiero aprender: ...
