@@ -1,168 +1,212 @@
 # Mars Explorer Lab 🔒
 
-**Proyecto de práctica del equipo.** No es una solución final ni un proyecto oficial de NASA. Su objetivo es entrenar las habilidades técnicas y el flujo de trabajo del equipo.
+Laboratorio de práctica para aprender y desarrollar una aplicación web de exploración de Marte, inspirada en el desafío de NASA Space Apps Challenge 2026: **Interplanetary Survival Guide: Martian Map**.
 
-## 1. Contexto del reto
+> **Importante:** Este repositorio es un laboratorio de aprendizaje independiente. No representa la solución oficial del desafío de NASA Space Apps Challenge.
 
-Este laboratorio se inspira en el reto de NASA Space Apps 2026 **"Interplanetary Survival Guide: Martian Map"** (Intermedio; temas: Human Exploration, Mars, Planets & Moons, Software, Space Exploration).
+## 🎯 Objetivo
 
-Resumen del enunciado: los primeros astronautas en Marte querrán el mejor mapa posible, con detalles de rutas y destinos, actualizaciones de condiciones actuales y los datos necesarios para completar su misión de forma rápida y segura. **El reto consiste en crear una vista integrada y por capas de una ubicación o ruta en la superficie marciana, que reúna datos de varias misiones científicas de NASA y ayude a un explorador humano a planificar y realizar una caminata marciana (Marswalk), haciendo ciencia en el camino.**
+Crear un prototipo web que permita explorar una zona de Marte mediante un mapa interactivo, visualizar capas de información y calcular rutas entre dos puntos considerando factores como la distancia, la pendiente y las zonas de riesgo.
 
-Enlace oficial: https://www.spaceappschallenge.org/2026/challenges/interplanetary-survival-guide-martian-map//?tab=teams
+El proyecto se desarrollará progresivamente, comenzando con datos de prueba y avanzando hacia datos geoespaciales reales cuando estemos preparados para procesarlos.
 
-> ⚠️ Este repositorio es **práctica independiente**. El proyecto del reto se desarrollará en un repositorio aparte, siguiendo las reglas oficiales del evento. Antes de reutilizar cualquier dato, hay que verificar sus condiciones de uso (ver `docs/FUENTES_DE_DATOS.md`).
+## 👥 Equipo de trabajo
 
-## 2. Objetivo de la práctica
+El laboratorio será desarrollado por dos integrantes:
 
-Construir un prototipo pequeño que muestre, para **una zona o ruta limitada de Marte**:
+| Integrante | Responsabilidad principal | Tareas |
+|---|---|---|
+| **Aldo** | Frontend y apoyo GIS | Desarrollar el mapa interactivo con Leaflet, crear la interfaz, visualizar las capas y representar las rutas. Apoyar la investigación y validación de datos geográficos. |
+| **Jesús** | Backend y algoritmos | Desarrollar la API con FastAPI, procesar los datos, implementar el algoritmo A* y calcular los costos de las rutas. |
 
-1. Un mapa con **varias capas** de datos que se puedan activar y desactivar.
-2. Un **cálculo de ruta** entre un origen y un destino con costo por pendiente y zonas de riesgo.
-3. Un **resumen** de la ruta (distancia, pendiente máxima).
+**Forma de trabajo:** Aldo y Jesús colaborarán en la integración, las pruebas, la documentación y la revisión del código. Cada integrante revisará los cambios del otro mediante Pull Requests cuando corresponda.
 
-Así practicamos la idea central del reto: integrar datos de distintas fuentes en una sola vista útil para planificar una caminata.
+## 🧰 Tecnologías previstas
 
-## 3. Equipo y roles
+- **Frontend:** HTML, CSS y JavaScript.
+- **Mapa interactivo:** Leaflet.
+- **Backend:** Python y FastAPI.
+- **Algoritmos:** A* para encontrar rutas.
+- **Datos geoespaciales:** formatos y herramientas adecuados según los datos seleccionados.
+- **Control de versiones:** Git y GitHub.
+- **Pruebas:** herramientas de Python y pruebas manuales de la interfaz.
 
-| Persona | Rol | Responsabilidad |
-|---------|-----|-----------------|
-| **Aldo** | GIS / Datos de Marte | Investigar, descargar y procesar datos; documentar fuentes y formatos |
-| **Jesús** | Backend | API (FastAPI), lectura de datos, pendiente, algoritmo de ruta (A*) |
-| **Luis** | Frontend | Mapa Leaflet, capas, interfaz de origen/destino y visualización de la ruta |
+Las tecnologías podrán ajustarse conforme avance el aprendizaje y se conozcan las necesidades reales del proyecto.
 
-Flujo de entrega: **Aldo → Jesús → Luis**. Cada rol documenta lo que entrega al siguiente.
+## 📁 Estructura del repositorio
 
-## 4. Estructura del repositorio
-
-```
+```text
 mars-explorer-lab/
-├── frontend/            # Interfaz web (Luis)
-├── backend/             # API FastAPI (Jesús)
+├── frontend/                 # Interfaz web y mapa (Aldo)
+├── backend/                  # API y procesamiento (Jesús)
 │   ├── app/
 │   │   └── main.py
 │   ├── tests/
 │   └── requirements.txt
-├── algorithms/          # Ruta A* y costos (Jesús)
+├── algorithms/               # Algoritmo A* y costos de ruta (Jesús)
 ├── data/
-│   ├── raw/             # Datos originales (no se suben a Git)
-│   └── processed/       # Datos procesados (no se suben a Git)
+│   ├── raw/                  # Datos originales, no modificados
+│   └── processed/            # Datos preparados para la aplicación
 ├── docs/
 │   ├── PLAN_DE_FASES.md
 │   ├── ARQUITECTURA.md
 │   ├── FUENTES_DE_DATOS.md
 │   ├── CONTRATO_DE_DATOS.md
-│   └── FLUJO_GIT.md
-├── tests/
+│   ├── FLUJO_GIT.md
+│   └── LECCIONES_APRENDIDAS.md
+├── tests/                    # Pruebas generales del proyecto
 ├── .github/
 │   └── pull_request_template.md
 ├── .gitignore
 └── README.md
 ```
 
-## 5. Fases hasta el armado final
+Esta estructura es una propuesta inicial. Los archivos y directorios se crearán a medida que sean necesarios.
 
-El proyecto tiene **7 fases (0 a 6)**. Detalle completo en [`docs/PLAN_DE_FASES.md`](docs/PLAN_DE_FASES.md).
+## 🗺️ Funcionalidades previstas
+
+1. Mostrar una zona de Marte en un mapa interactivo.
+2. Permitir activar y desactivar capas de información.
+3. Seleccionar un punto de origen y un destino.
+4. Calcular una ruta utilizando el algoritmo A*.
+5. Considerar costos asociados a distancia, pendiente y zonas de riesgo.
+6. Dibujar la ruta calculada sobre el mapa.
+7. Mostrar un resumen de la ruta, incluyendo distancia y pendiente máxima cuando los datos lo permitan.
+
+Los riesgos ficticios empleados durante las pruebas estarán identificados claramente como datos simulados y no como riesgos reales de Marte.
+
+## 🛠️ Plan de trabajo
 
 | Fase | Nombre | Responsable | Entregable |
-|------|--------|-------------|------------|
-| 0 | Preparación | Los 3 | Repo clonado, entorno funcionando, primer PR |
-| 1 | Datos GIS | Aldo | Zona elegida, 2+ capas procesadas, fuentes documentadas |
-| 2 | Backend base | Jesús | API sirviendo capas, pendiente calculada |
-| 3 | Frontend base | Luis | Mapa Leaflet con capas conmutables |
-| 4 | Ruta y riesgo | Jesús + Aldo + Luis | Ruta A* dibujada en el mapa con resumen |
-| 5 | Pruebas y documentación | Los 3 | Pruebas pasando, docs al día |
-| 6 | Cierre | Los 3 | `docs/LECCIONES_APRENDIDAS.md` |
+|---|---|---|---|
+| 0 | Preparación | Aldo y Jesús | Repositorio organizado, entorno preparado y primer Pull Request. |
+| 1 | Datos y mapa inicial | Aldo y Jesús | Zona de prueba seleccionada, datos de prueba disponibles y fuentes documentadas. |
+| 2 | Backend básico | Jesús | API inicial que responda correctamente y permita consultar los datos de prueba. |
+| 3 | Frontend básico | Aldo | Mapa Leaflet con interfaz y controles iniciales. |
+| 4 | Rutas y riesgos | Aldo y Jesús | Algoritmo A*, cálculo de costos y visualización de la ruta. |
+| 5 | Pruebas e integración | Aldo y Jesús | Frontend conectado al backend, pruebas y documentación actualizada. |
+| 6 | Cierre del laboratorio | Aldo y Jesús | Proyecto documentado y archivo de lecciones aprendidas. |
 
-## 6. Guía paso a paso
+Las fases podrán modificarse si aparecen dificultades técnicas o si necesitamos aprender alguna tecnología antes de continuar.
 
-### Paso 1. Crear el repositorio (Jesús, una sola vez)
-1. En GitHub: **New repository** → nombre `mars-explorer-lab` → **Private**.
-2. Subir este contenido (`git init`, `git add .`, `git commit`, `git remote add origin ...`, `git push -u origin main`).
-3. En **Settings → Collaborators**, invitar a Aldo y a Luis.
-4. (Recomendado) En **Settings → Branches**, proteger `main` exigiendo Pull Request.
+## 🚀 Cómo comenzar
 
-### Paso 2. Clonar el repositorio (los 3)
+### 1. Clonar el repositorio
+
+Cada integrante debe clonar el repositorio en su propio equipo:
+
 ```bash
-git clone https://github.com/<usuario>/mars-explorer-lab.git
+git clone https://github.com/jesusjacintofabian/mars-explorer-lab.git
 cd mars-explorer-lab
 ```
 
-### Paso 3. Preparar el entorno
+### 2. Crear una rama de trabajo
 
-**Backend (Jesús, y quien quiera probarlo):**
+Aldo puede trabajar inicialmente en:
+
 ```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
-Abrir http://127.0.0.1:8000/health (debe responder `{"status":"ok"}`) y http://127.0.0.1:8000/docs.
-
-> `rasterio` puede requerir librerías del sistema según tu sistema operativo. Si falla la instalación, avisar al equipo y documentar la solución en `docs/`.
-
-**Pruebas del backend:**
-```bash
-cd backend
-pytest
+git switch -c feature/frontend
 ```
 
-**Frontend (Luis):** se define en la Fase 3. Si se usa Leaflet por CDN, basta un `index.html`; si se usa Node, documentar los comandos en `frontend/README.md`.
+Jesús puede trabajar inicialmente en:
 
-### Paso 4. Fase 0: primer Pull Request de práctica (los 3)
-Cada persona hace un cambio mínimo (por ejemplo, agregar su nombre a un archivo `docs/EQUIPO.md`) usando el flujo completo de [`docs/FLUJO_GIT.md`](docs/FLUJO_GIT.md): rama → commit → push → PR → revisión cruzada → merge.
+```bash
+git switch -c feature/backend
+```
 
-### Paso 5. Fase 1: Datos GIS (Aldo)
-1. Elegir una **zona de estudio pequeña** (una ubicación o una ruta corta).
-2. Investigar productos de datos de misiones NASA para esa zona. Registrar cada uno en [`docs/FUENTES_DE_DATOS.md`](docs/FUENTES_DE_DATOS.md): enlace oficial, licencia/atribución, resolución.
-3. Descargar a `data/raw/` y procesar a `data/processed/` (recortar a la zona, unificar sistema de coordenadas).
-4. Completar [`docs/CONTRATO_DE_DATOS.md`](docs/CONTRATO_DE_DATOS.md).
-5. Compartir los archivos pesados por un medio acordado por el equipo (no por Git) y anotar dónde están.
+Las ramas se utilizarán para desarrollar funcionalidades sin modificar directamente la rama principal.
 
-**Listo cuando:** hay 2+ capas procesadas y el contrato de datos está completo.
+### 3. Preparar el backend
 
-### Paso 6. Fase 2: Backend base (Jesús)
-1. Leer las capas procesadas según el contrato de datos.
-2. Calcular la **pendiente** a partir de la elevación.
-3. Crear endpoints para listar y servir capas.
-4. Agregar pruebas en `backend/tests/`.
+Jesús trabajará en el backend con Python y FastAPI.
 
-**Listo cuando:** Luis puede consumir las capas desde `/docs` o con una petición de prueba.
+Desde la raíz del repositorio, cuando exista el directorio `backend/`:
 
-### Paso 7. Fase 3: Frontend base (Luis)
-1. Crear el mapa Leaflet en `frontend/`.
-2. Agregar control para activar/desactivar capas.
-3. Permitir seleccionar origen y destino.
-4. Conectar con el backend real.
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install fastapi uvicorn
+```
 
-**Listo cuando:** se ven las capas del backend y se pueden alternar.
+El entorno virtual permite instalar las dependencias del backend sin mezclarlas con otros proyectos de Python.
 
-### Paso 8. Fase 4: Ruta y riesgo (Jesús, con Aldo y Luis)
-1. Jesús implementa A* en `algorithms/` sobre una cuadrícula con costo por pendiente.
-2. Aldo define con Jesús las **zonas de riesgo de práctica** (derivadas de los datos o ficticias, siempre marcadas como tales).
-3. Luis dibuja la ruta y muestra el resumen (distancia, pendiente máxima).
+Las dependencias utilizadas se registrarán posteriormente en `requirements.txt`.
 
-**Listo cuando:** elegir origen y destino devuelve y dibuja una ruta.
+### 4. Preparar el frontend
 
-### Paso 9. Fase 5: Pruebas y documentación (los 3)
-1. Pruebas para backend y algoritmo con casos pequeños.
-2. Una persona que no escribió el código sigue este README desde cero para comprobar que se puede levantar el proyecto.
-3. Corregir lo que falle y actualizar la documentación.
+Aldo trabajará inicialmente con HTML, CSS, JavaScript y Leaflet.
 
-### Paso 10. Fase 6: Cierre (los 3)
-Reunión de retrospectiva y creación de `docs/LECCIONES_APRENDIDAS.md`: qué funcionó, qué tardó más, qué haríamos distinto, qué habilidades ganamos.
+El frontend comenzará con una página web sencilla y un mapa de prueba. Más adelante se conectará con la API desarrollada por Jesús.
 
-## 7. Reglas del equipo
+No es necesario instalar todas las herramientas desde el primer día. Se incorporarán conforme las funcionalidades las requieran.
 
-1. `main` siempre estable; todo entra por Pull Request con revisión de otra persona.
-2. Ningún dato se usa sin registrarse en `docs/FUENTES_DE_DATOS.md`.
-3. No subir datos pesados ni credenciales a Git.
-4. Todo lo que sea ficticio (zonas de riesgo, condiciones) se etiqueta como **de práctica**.
-5. Esta práctica **no se renombra ni se presenta como el proyecto del reto**.
-6. Si algo de este README no coincide con las reglas oficiales del evento, mandan las reglas oficiales.
+## 🌐 Datos geoespaciales
 
-## 8. Referencias
-- Reto: https://www.spaceappschallenge.org/2026/challenges/interplanetary-survival-guide-martian-map//?tab=teams
-- Flujo Git: [`docs/FLUJO_GIT.md`](docs/FLUJO_GIT.md)
-- Arquitectura: [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md)
-- Plan de fases: [`docs/PLAN_DE_FASES.md`](docs/PLAN_DE_FASES.md)
+Antes de utilizar datos reales, debemos:
+
+1. Seleccionar una zona de estudio pequeña.
+2. Investigar las fuentes disponibles de datos de Marte.
+3. Registrar la fuente, el formato, la fecha de consulta y la licencia o condiciones de uso aplicables.
+4. Comprobar que los datos pueden visualizarse o procesarse con nuestras herramientas.
+5. Documentar cómo se prepararon para utilizarlos en el proyecto.
+
+Durante las primeras pruebas podremos usar datos sintéticos, como una cuadrícula con costos ficticios, para aprender a implementar el mapa y el algoritmo de rutas.
+
+Los archivos grandes no deben incorporarse al repositorio sin evaluar antes su tamaño y necesidad. Cuando sea posible, se documentará cómo obtenerlos.
+
+## 🔌 Integración entre frontend y backend
+
+El frontend enviará al backend las coordenadas o celdas de origen y destino.
+
+El backend procesará la solicitud y devolverá la información necesaria para dibujar la ruta.
+
+El formato de intercambio se documentará en `docs/CONTRATO_DE_DATOS.md` antes de integrar funcionalidades que dependan de él.
+
+La integración se hará progresivamente: primero una respuesta de prueba, después los datos del mapa y finalmente el cálculo de rutas.
+
+## 🔀 Flujo de trabajo con Git y GitHub
+
+1. Cada integrante trabaja en su propia rama.
+2. Realiza cambios pequeños y comprensibles.
+3. Comprueba que su código funciona.
+4. Guarda los cambios mediante commits con mensajes descriptivos.
+5. Abre un Pull Request hacia `main`.
+6. El otro integrante revisa los cambios antes de integrarlos.
+7. Ambos actualizan su rama local después de integrar los cambios.
+
+La rama `main` debe mantenerse en un estado funcional siempre que sea posible.
+
+## 📋 Reglas del laboratorio
+
+- No subir contraseñas, tokens, claves privadas ni credenciales.
+- No subir archivos de datos grandes sin evaluar antes su necesidad.
+- Documentar las fuentes de los datos utilizados.
+- Identificar claramente los datos sintéticos y los resultados simulados.
+- No afirmar que una ruta es segura para una misión real: este prototipo es educativo.
+- Mantener actualizada la documentación cuando cambie la arquitectura o el formato de los datos.
+- Priorizar el aprendizaje y las pruebas antes de añadir funcionalidades complejas.
+- Mantener este laboratorio separado de cualquier entrega oficial de NASA Space Apps Challenge y respetar las reglas aplicables al desafío oficial.
+
+## 📚 Documentación
+
+Los documentos del directorio `docs/` describirán progresivamente:
+
+- **PLAN_DE_FASES.md:** etapas y objetivos del trabajo.
+- **ARQUITECTURA.md:** componentes y comunicación entre frontend y backend.
+- **FUENTES_DE_DATOS.md:** procedencia y condiciones de uso de los datos.
+- **CONTRATO_DE_DATOS.md:** formato de intercambio entre componentes.
+- **FLUJO_GIT.md:** ramas, commits y Pull Requests.
+- **LECCIONES_APRENDIDAS.md:** dificultades, soluciones y conocimientos adquiridos.
+
+## 🎓 Propósito educativo
+
+Mars Explorer Lab nos permitirá aprender mediante la práctica conceptos de desarrollo web, procesamiento de datos, algoritmos, cartografía digital, pruebas de software y colaboración con GitHub.
+
+**La meta es construirlo paso a paso, comprendiendo cada componente antes de pasar al siguiente.**
+
+---
+
+**Equipo:** Aldo y Jesús  
+**Repositorio:** [mars-explorer-lab](https://github.com/jesusjacintofabian/mars-explorer-lab)  
+**Estado:** Laboratorio de práctica en desarrollo.
